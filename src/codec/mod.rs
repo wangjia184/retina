@@ -450,6 +450,10 @@ impl Depacketizer {
                 clock_rate,
                 format_specific_params,
             )?)),
+            ("video", "h265") => DepacketizerInner::H264(Box::new(h264::Depacketizer::new(
+                clock_rate,
+                format_specific_params,
+            )?)),
             ("audio", "mpeg4-generic") => DepacketizerInner::Aac(Box::new(aac::Depacketizer::new(
                 clock_rate,
                 channels,
